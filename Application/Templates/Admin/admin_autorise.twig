@@ -1,0 +1,29 @@
+{% extends 'base.twig' %}
+
+{% block content%}
+
+    <script defer src="/TaskApp/public/js/admin.js" ></script>
+    <h5>Добавление задачи</h5>
+    <form>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Введите логин</label>
+            <input type="text" class="form-control" id="AdminLoginInput" placeholder="Login">
+
+
+            <label for="formGroupExampleInput">Введите пароль</label>
+            <input type="password" class="form-control" id="AdminPasswordInput" placeholder="Password">
+
+            <div class="form-group">
+                <div id="errorInput" style=" display: none;" class="message alert alert-danger">Логин или пароль указаны неверно!</div>
+            </div>
+
+        </div>
+
+
+        <div class="form-group" id="EnterButton">
+            <div class="btn btn-primary">Войти</div>
+        </div>
+
+    </form>
+
+{% endblock %}

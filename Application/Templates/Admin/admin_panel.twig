@@ -1,0 +1,52 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    <script type="text/javascript" src="/TaskApp/node_modules/bootpag/lib/jquery.bootpag.js"></script>
+    <script defer src="/TaskApp/public/js/admin.js" ></script>
+    <div id="content">
+        {% if tasks %}
+
+            <div class="row justify-content-center">
+                <h4>Задачи  </h4>
+                <h4 id="title">{{ count }}</h4>
+            </div>
+
+            {% for task in tasks %}
+                <blockquote  style="background: beige; padding: 10px ">
+                    <h5>{{ task.userName }}</h5>
+                    <h6>{{ task.userEmail }}</h6>
+                    <textarea data-task-id="{{ task.taskID }}" cols="100" rows="7">{{ task.taskText}}</textarea>
+                    <div class="form-group">
+                        <label>Cтатус задачи:</label><br>
+                        {% if task.isComp %}
+                            <input data-task-id="{{ task.taskID}}" type="checkbox" checked>Выполнена<br>
+
+                        {% else %}
+                            <input  data-task-id="{{ task.taskID }}"  type="checkbox">Выполнена<br>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group" data-task-id="{{ task.taskID }}" id="SaveButton">
+                        <div  class="btn btn-primary">Сохранить изменения</div>
+                    </div>
+                </blockquote>
+
+
+            {% endfor %}
+
+
+        {% else %}
+            <h4>Задач для выполнения нет!!</h4>
+
+        {% endif %}
+
+
+        <div id="pagination-here"></div>
+
+        <script type="text/javascript" src="/TaskApp/public/js/pagination.js"></script>
+    </div>
+
+
+
+{% endblock  %}

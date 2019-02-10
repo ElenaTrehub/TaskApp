@@ -1,0 +1,44 @@
+{% extends 'base.twig' %}
+
+{% block content %}
+
+    <script type="text/javascript" src="/TaskApp/node_modules/bootpag/lib/jquery.bootpag.js"></script>
+
+    <div id="content">
+        {% if tasks %}
+
+            <div class="row justify-content-center">
+                <h4>Задачи  </h4>
+                <h4 id="title">{{ count }}</h4>
+            </div>
+
+            {% for task in tasks %}
+                <blockquote  style="background: beige; padding: 10px ">
+                    <h5>{{ task.userName }}</h5>
+                    <h6>{{ task.userEmail }}</h6>
+                    <p>{{ task.taskText}}</p>
+                    {% if task.isComp %}
+                        <h6><span style="color: green">Задача выполнена</span></h6>
+                    {% else %}
+                        <h6><span style="color: red">Задача не выполнена!</span></h6>
+                    {% endif %}
+                </blockquote>
+
+
+            {% endfor %}
+
+
+        {% else %}
+            <h4>Задач для выполнения нет!!</h4>
+
+        {% endif %}
+
+
+        <div id="pagination-here"></div>
+
+        <script type="text/javascript" src="/TaskApp/public/js/pagination.js"></script>
+    </div>
+
+
+
+{% endblock  %}
